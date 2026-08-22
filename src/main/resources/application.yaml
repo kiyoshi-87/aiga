@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: aiga
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/aiga}
+    username: ${SPRING_DATASOURCE_USERNAME:aiga}
+    password: ${SPRING_DATASOURCE_PASSWORD:aiga_dev_password}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+server:
+  servlet:
+    session:
+      timeout: 8h
+      cookie:
+        name: AIGA_SESSION
+        http-only: true
+        secure: ${SESSION_COOKIE_SECURE:true}
+        same-site: lax
+        path: /
