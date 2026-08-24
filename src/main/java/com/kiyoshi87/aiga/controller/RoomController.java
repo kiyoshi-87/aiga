@@ -21,8 +21,15 @@ public class RoomController {
     @PostMapping
     public ResponseEntity<RoomResponseDto> createRoom(@Valid @RequestBody CreateRoomRequestDto request,
                                                        @AuthenticationPrincipal UserDetails user) {
-        String applicationUrl = ServletUriComponentsBuilder.fromCurrentContextPath().toUriString();
+        String applicationUrl = ServletUriComponentsBuilder.fromCurrentContextPath().toUriString(); // Will need proper FE URL config later
         RoomResponseDto response = roomService.createRoom(request, user.getUsername(), applicationUrl);
+
         return ResponseEntity.status(201).body(response);
+    }
+
+    @GetMapping("/{roomId}")
+    public ResponseEntity<RoomResponseDto> getRoom(@PathVariable Long roomId) {
+        RoomResponseDto response = roomService.getRoom(roomId);
+        return ResponseEntity.ok(response);
     }
 }
