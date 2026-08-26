@@ -7,22 +7,22 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/rooms")
+@RequestMapping("api/v1/rooms")
 public class RoomController {
 
     private final RoomService roomService;
 
     @PostMapping
     public ResponseEntity<RoomResponseDto> createRoom(@Valid @RequestBody CreateRoomRequestDto request,
-                                                       @AuthenticationPrincipal UserDetails user) {
+                                                       @AuthenticationPrincipal Jwt jwt) {
         String applicationUrl = ServletUriComponentsBuilder.fromCurrentContextPath().toUriString(); // Will need proper FE URL config later
-        RoomResponseDto response = roomService.createRoom(request, user.getUsername(), applicationUrl);
+        RoomResponseDto response = roomService.createRoom(request, jwt.getSubject(), applicationUrl);
 
         return ResponseEntity.status(201).body(response);
     }

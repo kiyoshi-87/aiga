@@ -5,5 +5,8 @@ import lombok.Builder;
 @Builder
 public record AuthResponseDto(
     Long id,
-    String email
+    String email,
+    String accessToken,
+    String tokenType,
+    long expiresIn
 ) { }

@@ -11,9 +11,9 @@ import com.kiyoshi87.aiga.model.entity.User;
 import com.kiyoshi87.aiga.repository.MediaRepository;
 import com.kiyoshi87.aiga.repository.RoomRepository;
 import com.kiyoshi87.aiga.repository.UserRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -51,6 +51,7 @@ public class RoomService {
                 .build();
     }
 
+    @Transactional(readOnly = true)
     public RoomResponseDto getRoom(Long roomId) {
         Room room = roomRepository.findById(roomId)
                 .orElseThrow(() -> new IllegalArgumentException("Room not found"));

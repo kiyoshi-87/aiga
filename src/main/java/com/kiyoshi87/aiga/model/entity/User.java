@@ -15,7 +15,7 @@ import java.time.Instant;
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(name = "user", uniqueConstraints = @UniqueConstraint(name = "uk_user_email", columnNames = "email"))
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(name = "uk_user_email", columnNames = "email"))
 public class User {
 
     @Id

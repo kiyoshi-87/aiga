@@ -1,4 +1,6 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
   application:
     name: aiga
   datasource:
@@ -9,13 +11,9 @@ spring:
     hibernate:
       ddl-auto: update
     open-in-view: false
-server:
-  servlet:
-    session:
-      timeout: 8h
-      cookie:
-        name: AIGA_SESSION
-        http-only: true
-        secure: ${SESSION_COOKIE_SECURE:true}
-        same-site: lax
-        path: /
+
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: ${JWT_ISSUER:aiga-api}
+    access-token-ttl: ${JWT_ACCESS_TOKEN_TTL:15m}
