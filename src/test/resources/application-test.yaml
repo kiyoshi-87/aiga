@@ -1,0 +1,5 @@
+app:
+  jwt:
+    secret: "YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoxMjM0NTY="
+    issuer: aiga-test
+    access-token-ttl: 15m

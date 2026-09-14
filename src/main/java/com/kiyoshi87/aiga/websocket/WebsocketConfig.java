@@ -12,10 +12,12 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 public class WebsocketConfig implements WebSocketConfigurer {
 
     private final AigaWebSocketHandler handler;
+    private final AigaHandshakeInterceptor handshakeInterceptor;
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(handler, "/ws/aiga")
-                .setAllowedOrigins("*"); // Allow all origins for now | will need to set this later
+                .addInterceptors(handshakeInterceptor)
+                .setAllowedOrigins("http://localhost:3000");
     }
 }

@@ -1,7 +1,7 @@
 package com.kiyoshi87.aiga.controller;
 
-import com.kiyoshi87.aiga.model.dto.CreateRoomRequestDto;
-import com.kiyoshi87.aiga.model.dto.RoomResponseDto;
+import com.kiyoshi87.aiga.model.dto.rest.CreateRoomRequestDto;
+import com.kiyoshi87.aiga.model.dto.rest.RoomResponseDto;
 import com.kiyoshi87.aiga.service.RoomService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

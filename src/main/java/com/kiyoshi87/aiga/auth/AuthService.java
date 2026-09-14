@@ -3,7 +3,7 @@ package com.kiyoshi87.aiga.auth;
 import com.kiyoshi87.aiga.auth.model.AuthRequestDto;
 import com.kiyoshi87.aiga.auth.model.AuthResponseDto;
 import com.kiyoshi87.aiga.auth.model.CurrentUserResponseDto;
-import com.kiyoshi87.aiga.config.ConflictException;
+import com.kiyoshi87.aiga.exception.ConflictException;
 import com.kiyoshi87.aiga.config.JwtProperties;
 import com.kiyoshi87.aiga.model.entity.User;
 import com.kiyoshi87.aiga.repository.UserRepository;

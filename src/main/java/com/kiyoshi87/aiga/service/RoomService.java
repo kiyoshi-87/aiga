@@ -2,9 +2,9 @@ package com.kiyoshi87.aiga.service;
 
 import com.kiyoshi87.aiga.model.RoomStatus;
 import com.kiyoshi87.aiga.model.SourceType;
-import com.kiyoshi87.aiga.model.dto.CreateRoomRequestDto;
-import com.kiyoshi87.aiga.model.dto.MediaResponseDto;
-import com.kiyoshi87.aiga.model.dto.RoomResponseDto;
+import com.kiyoshi87.aiga.model.dto.rest.CreateRoomRequestDto;
+import com.kiyoshi87.aiga.model.dto.rest.MediaResponseDto;
+import com.kiyoshi87.aiga.model.dto.rest.RoomResponseDto;
 import com.kiyoshi87.aiga.model.entity.Media;
 import com.kiyoshi87.aiga.model.entity.Room;
 import com.kiyoshi87.aiga.model.entity.User;
@@ -48,6 +48,7 @@ public class RoomService {
         return RoomResponseDto.builder()
                 .roomId(room.getId())
                 .shareUrl(applicationUrl + "/room/" + room.getId())
+                .hostUserId(host.getId())
                 .build();
     }
 
@@ -61,6 +62,7 @@ public class RoomService {
         return RoomResponseDto.builder()
                 .roomId(room.getId())
                 .shareUrl("/room/" + room.getId())
+                .hostUserId(room.getHost().getId())
                 .media(media != null ? MediaResponseDto.builder()
                         .sourceType(media.getSourceType().name())
                         .sourceUrl(media.getSourceUrl())
