@@ -7,7 +7,10 @@ import java.util.Arrays;
 @Getter
 public enum MessageType {
     JOIN_ROOM("JOIN_ROOM"),
-    LEAVE_ROOM("LEAVE_ROOM");
+    LEAVE_ROOM("LEAVE_ROOM"),
+    PLAY("PLAY"),
+    PAUSE("PAUSE"),
+    SEEK("SEEK");
 
     final String type;
 
